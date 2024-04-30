@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Form</title>
+  <style>
+    /* ===( CODE AASHU )=== */
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    section{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      background-image: url(static/images/login-images/loginbg.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    @keyframes animateBg{
+      100%{
+        filter: hue-rotate(360deg);
+      }
+    }
+
+    .login-box{
+      position: relative;
+      width: 400px;
+      height: 450px;
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, .5);
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(50px);
+    }
+
+    h2{
+      font-size: 2em;
+      color: #ff2864;
+      text-align: center;
+    }
+
+    .input-box{
+      position: relative;
+      width: 310px;
+      margin: 30px 0;
+      border-bottom: 2px solid #aaa8ae;
+    }
+
+    .input-box label{
+      position: absolute;
+      top: 50%;
+      left: 5px;
+      transform: translateY(-50%);
+      font-size: 1em;
+      color: #e1e0e0;
+      pointer-events: none;
+      transition: .5s;
+    }
+
+    .input-box input:focus~label,
+    .input-box input:valid~label{
+      top: -5px;
+    }
+
+    .input-box input{
+      width: 100%;
+      height: 50px;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 1em;
+      color: #ff2864;
+      padding: 0 35px 0 5px;
+    }
+
+    .input-box .icon{
+      position: absolute;
+      right: 8px;
+      color: #ff2864;
+      font-size: 1.2em;
+      line-height: 57px;
+    }
+
+    .remember-forget{
+      margin: -15px 0 15px;
+      font-size: .9em;
+      color: #b9c9bc;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .remember-forget label input{
+      margin: right 3px;
+    }
+
+    .remember-forget a{
+      color: #c8c7ce;
+      text-decoration: none;
+    }
+
+    .remember-forget a:hover{
+      text-decoration: underline;
+    }
+
+    button{
+      width: 100%;
+      height: 40px;
+      background: #ff2864;
+      border: none;
+      outline: none;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 1em;
+      color: #000;
+      font-weight: 500;
+    }
+
+    .register-link{
+      font-size: .9em;
+      color: #507eeb;
+      text-align: center;
+      margin: 25px 0 10px;
+    }
+
+    .register-link p a{
+      color: #3b35b5;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .register-link p a:hover{
+      text-decoration: underline;
+    }
+
+    @media (max-width:360px){
+      .login-box{
+        width: 100%;
+        height: 100vh;
+        border: none;
+        border-radius: 0;
+      }
+      .input-box{
+        width: 290px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <div class="login-box">
+      <form action="index.html" method="POST">
+        {% csrf_token %}
+        <h2>Login</h2>
+        <div class="input-box">
+          <span class="icon"><ion-icon name="mail"></ion-icon> </span>
+          <input type="email" placeholder="email" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Please enter a valid email address">
+          <label>Email</label>
+        </div>
+        <div class="input-box">
+          <span class="icon"><ion-icon name="lock-closed"></ion-icon> </span>
+          <input type="password" placeholder="password" required pattern=".{8,}" title="Password must be at least 8 characters long">
+          <label>Password</label>
+        </div>
+        <div class="remember-forget">
+          <label>
+            <input type="checkbox">Remember Me
+          </label>
+          <a href="#">Forget Password</a>
+        </div>
+        <button type="submit">Login</button>
+        <div class="register-link">
+          <p>Don't have an account?<br>
+            <a href="registration">Register</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </section>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
